@@ -1,0 +1,91 @@
+.result-page {
+  min-height: calc(100vh - 64px);
+  display: grid;
+  place-items: center;
+  padding: 56px 28px;
+  background:
+    radial-gradient(circle at top, #ece6fb, transparent 40%),
+    #f7f8fc;
+}
+
+.result-card {
+  width: min(500px, 100%);
+  padding: 48px 32px;
+  text-align: center;
+  background-color: #ffffff;
+  border: 1px solid #d5dce8;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(31, 42, 68, 0.12);
+}
+
+.result-card__trophy {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 6rem;
+  filter: drop-shadow(0 8px 8px rgba(128, 96, 25, 0.2));
+}
+
+.result-card h1 {
+  margin: 0;
+  color: #26334a;
+  font-size: 2rem;
+}
+
+.result-card__message {
+  margin: 10px 0 28px;
+  color: #667085;
+}
+
+.result-card__label {
+  margin: 0;
+  color: #526079;
+  font-size: 0.9rem;
+}
+
+.result-card__score {
+  margin: 4px 0 30px;
+  color: #7656c8;
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+.result-card__actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.result-card__retry,
+.result-card__ranking {
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.result-card__retry {
+  color: #ffffff;
+  background-color: #7656c8;
+  border: 1px solid #7656c8;
+}
+
+.result-card__ranking {
+  color: #526079;
+  background-color: #ffffff;
+  border: 1px solid #aeb8c9;
+}
+
+@media (max-width: 480px) {
+  .result-page {
+    padding: 32px 16px;
+  }
+
+  .result-card {
+    padding: 36px 20px;
+  }
+
+  .result-card__actions {
+    flex-direction: column;
+  }
+}
