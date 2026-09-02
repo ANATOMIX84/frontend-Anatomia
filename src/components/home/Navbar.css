@@ -77,3 +77,46 @@
 .navbar__profile:hover {
   transform: scale(1.06);
 }
+.navbar__account {
+  position: relative;
+}
+
+.navbar__profile-menu {
+  position: absolute;
+  top: 46px;
+  right: 0;
+  width: 210px;
+  padding: 14px;
+  display: grid;
+  gap: 8px;
+  color: #34415a;
+  background: #ffffff;
+  border: 1px solid #dbe1eb;
+  border-radius: 9px;
+  box-shadow: 0 10px 22px rgba(31, 42, 68, 0.16);
+}
+
+.navbar__profile-menu p {
+  margin: 0;
+  font-weight: 800;
+}
+
+.navbar__profile-menu small {
+  margin-bottom: 6px;
+  color: #667085;
+}
+
+.navbar__profile-menu button {
+  padding: 9px 10px;
+  color: #526079;
+  background: #f7f8fc;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.navbar__profile-menu button:hover {
+  color: #ffffff;
+  background: #7656c8;
+}

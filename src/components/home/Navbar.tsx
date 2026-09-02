@@ -1,16 +1,37 @@
-import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { authRepository } from "../../repositories/authRepository";
 import "./Navbar.css";
 
 const enlaces = [
   { nombre: "Inicio", ruta: "/home" },
   { nombre: "Juego", ruta: "/juego" },
-  { nombre: "Competencia", ruta: "/competencia" },
+  { nombre: "Competencia", ruta: "/ranking" },
   { nombre: "Estadísticas", ruta: "/estadisticas" },
   { nombre: "Modelo 3D", ruta: "/modelo-3d" },
   { nombre: "Créditos", ruta: "/creditos" },
+  { nombre: "Subir archivos", ruta: "/subir-archivos" },
+  { nombre: "Biblioteca", ruta: "/biblioteca" },
 ];
 
 export function Navbar() {
+  const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const user = authRepository.getCurrentUser();
+  const initial = user?.name.charAt(0).toUpperCase() ?? "A";
+
+  const goTo = (route: string) => {
+    setMenuOpen(false);
+    navigate(route);
+  };
+
+  const handleLogout = () => {
+    authRepository.logout();
+    setMenuOpen(false);
+    navigate("/login");
+  };
+
   return (
     <header className="navbar">
       <div className="navbar__container">
@@ -32,13 +53,43 @@ export function Navbar() {
           ))}
         </nav>
 
-        <button
-          type="button"
-          className="navbar__profile"
-          aria-label="Abrir perfil"
-        >
-          A
-        </button>
+        <div className="navbar__account">
+          <button
+            type="button"
+            className="navbar__profile"
+            aria-label="Abrir perfil"
+            onClick={() => setMenuOpen((current) => !current)}
+          >
+            {initial}
+          </button>
+
+          {menuOpen && (
+            <div className="navbar__profile-menu">
+              {user ? (
+                <>
+                  <p>Hola, {user.name}</p>
+                  <small>{user.carnet}</small>
+
+                  <button type="button" onClick={handleLogout}>
+                    Cerrar sesión
+                  </button>
+                </>
+              ) : (
+                <>
+                  <p>Tu cuenta</p>
+
+                  <button type="button" onClick={() => goTo("/login")}>
+                    Iniciar sesión
+                  </button>
+
+                  <button type="button" onClick={() => goTo("/registro")}>
+                    Crear una cuenta
+                  </button>
+                </>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );

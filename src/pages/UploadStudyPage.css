@@ -1,0 +1,175 @@
+.study-upload-page {
+  min-height: calc(100vh - 64px);
+  padding: 56px 28px;
+  color: #ecf1ff;
+  background:
+    radial-gradient(circle at top, rgba(118, 86, 200, 0.2), transparent 35%),
+    #070a14;
+}
+
+.study-upload-card {
+  width: min(980px, 100%);
+  margin: 0 auto;
+  padding: 28px;
+  background: #0c1222;
+  border: 1px solid #5e4b99;
+  border-radius: 12px;
+  box-shadow: 0 0 24px rgba(118, 86, 200, 0.22);
+}
+
+.study-upload-card__header {
+  margin-bottom: 26px;
+}
+
+.study-upload-card__header h1 {
+  margin: 0 0 8px;
+  color: #ffffff;
+  font-size: 1.7rem;
+  text-transform: uppercase;
+}
+
+.study-upload-card__header p {
+  margin: 0;
+  color: #aeb9d0;
+}
+
+.study-upload-card__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.upload-area {
+  min-height: 270px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #d9e3ff;
+  background-color: #090e1c;
+  border: 2px dashed #526cc9;
+  border-radius: 14px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.upload-area:hover {
+  background-color: #0d1428;
+  border-color: #8a6ee4;
+}
+
+.upload-area__icon {
+  width: 76px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  color: #77c9ff;
+  font-size: 3.5rem;
+}
+
+.upload-area strong {
+  color: #ffffff;
+}
+
+.upload-area small {
+  margin-top: 14px;
+  color: #8794b2;
+}
+
+.upload-area input {
+  display: none;
+}
+
+.files-list {
+  min-height: 270px;
+  padding: 20px;
+  background-color: #090e1c;
+  border: 1px solid #293555;
+  border-radius: 14px;
+}
+
+.files-list h2 {
+  margin: 0 0 16px;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.files-list ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.files-list li {
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 0;
+  border-bottom: 1px solid #202b45;
+}
+
+.files-list li:last-child {
+  border-bottom: 0;
+}
+
+.files-list__icon {
+  font-size: 1.45rem;
+}
+
+.files-list strong,
+.files-list small {
+  display: block;
+}
+
+.files-list strong {
+  overflow: hidden;
+  color: #e5eaff;
+  font-size: 0.86rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.files-list small {
+  margin-top: 3px;
+  color: #8490ad;
+  font-size: 0.72rem;
+}
+
+.files-list button {
+  color: #9da9c4;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.files-list button:hover {
+  color: #ff7272;
+}
+
+.files-list__empty {
+  color: #8490ad;
+  font-size: 0.9rem;
+}
+
+.study-upload-card__error {
+  margin: 18px 0 0;
+  color: #ff9898;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .study-upload-page {
+    padding: 32px 16px;
+  }
+
+  .study-upload-card {
+    padding: 20px;
+  }
+
+  .study-upload-card__content {
+    grid-template-columns: 1fr;
+  }
+}

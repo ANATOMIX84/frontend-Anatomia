@@ -18,3 +18,9 @@ export interface LoginCredentials {
   carnet: string;
   password: string;
 }
+
+export interface RegisterCredentials {
+  name: string;
+  carnet: string;
+  password: string;
+}

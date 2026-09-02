@@ -1,0 +1,40 @@
+.model-page {
+  min-height: calc(100vh - 64px);
+  padding: 56px 28px;
+  background-color: #f7f8fc;
+}
+
+.model-page__content {
+  width: min(1064px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.75fr 1.25fr;
+  align-items: center;
+  gap: 48px;
+}
+
+.model-page__description p {
+  margin: 0 0 10px;
+  color: #7656c8;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.model-page__description h1 {
+  margin: 0 0 16px;
+  color: #26334a;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+}
+
+.model-page__description span {
+  color: #667085;
+  line-height: 1.6;
+}
+
+@media (max-width: 850px) {
+  .model-page__content {
+    grid-template-columns: 1fr;
+  }
+}

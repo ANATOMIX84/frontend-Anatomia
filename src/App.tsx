@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Loader } from "./components/Loader/Loader";
 import AppRoutes from "./routes/AppRoutes";
-
+import { StudyFilesProvider } from "./context/StudyFilesContext";
 
 function App() {
   const [cargando, setCargando] = useState(true);
@@ -18,7 +18,12 @@ function App() {
     return <Loader />;
   }
 
-  return <AppRoutes />;
+  
+  return (
+    <StudyFilesProvider>
+      <AppRoutes />
+    </StudyFilesProvider>
+  );
 }
 
 export default App;
