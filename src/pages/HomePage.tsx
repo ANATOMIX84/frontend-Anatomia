@@ -8,22 +8,22 @@ import "./HomePage.css";
 
 const sistemas = [
   {
-    icono: "🦴",
+    imagen: "/models/oseo.jpeg",
     nombre: "Sistema Óseo",
     descripcion: "Estructura y soporte",
   },
   {
-    icono: "💪",
+    imagen: "/models/muscular.jpeg",
     nombre: "Sistema Muscular",
     descripcion: "Movimiento y fuerza",
   },
   {
-    icono: "🧠",
+    imagen: "/models/nervioso.jpeg",
     nombre: "Sistema Nervioso",
     descripcion: "Control y coordinación",
   },
   {
-    icono: "🫀",
+    imagen: "/models/circulatorio.jpeg",
     nombre: "Sistema Circulatorio",
     descripcion: "Transporte de sangre",
   },
@@ -62,7 +62,7 @@ function HomePage() {
             {sistemas.map((sistema) => (
                <SystemCard
                   key={sistema.nombre}
-                  icono={sistema.icono}
+                  imagen={sistema.imagen}
                   nombre={sistema.nombre}
                   descripcion={sistema.descripcion}
             />

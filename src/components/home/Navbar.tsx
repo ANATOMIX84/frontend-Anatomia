@@ -7,9 +7,9 @@ const enlaces = [
   { nombre: "Inicio", ruta: "/home" },
   { nombre: "Juego", ruta: "/juego" },
   { nombre: "Competencia", ruta: "/ranking" },
-  { nombre: "Estadísticas", ruta: "/estadisticas" },
+ 
   { nombre: "Modelo 3D", ruta: "/modelo-3d" },
-  { nombre: "Créditos", ruta: "/creditos" },
+ 
   { nombre: "Subir archivos", ruta: "/subir-archivos" },
   { nombre: "Biblioteca", ruta: "/biblioteca" },
 ];

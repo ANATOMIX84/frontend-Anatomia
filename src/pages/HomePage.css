@@ -1,52 +1,139 @@
+/* =========================================================
+   PÁGINA PRINCIPAL
+   ========================================================= */
+
 .home {
   min-height: 100vh;
-  color: #1d2939;
-  background-color: #f7f8fc;
+  color: #ffffff;
+
+  background:
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(120, 40, 255, 0.16),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 75%,
+      rgba(0, 120, 255, 0.12),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #030712 0%,
+      #070b1d 50%,
+      #050816 100%
+    );
 }
+
+
+/* =========================================================
+   SECCIÓN DE SISTEMAS
+   ========================================================= */
 
 .systems {
-  width: min(1064px, calc(100% - 56px));
+  width: min(1200px, calc(100% - 56px));
   margin: 0 auto;
-  padding: 56px 0 72px;
+  padding: 55px 0 75px;
+
+  position: relative;
 }
 
+
+/* =========================================================
+   TÍTULO
+   ========================================================= */
+
 .systems__heading {
-  margin-bottom: 28px;
+  margin-bottom: 35px;
   text-align: center;
 }
 
 .systems__eyebrow {
   margin: 0 0 10px;
-  color: #7656c8;
+
+  color: #a855f7;
+
   font-size: 0.75rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
+
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+
+  text-shadow:
+    0 0 10px rgba(168, 85, 247, 0.55);
 }
 
 .systems__heading h2 {
   margin: 0;
-  color: #1e2a40;
-  font-size: 1.8rem;
+
+  color: #ffffff;
+
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 800;
+
+  text-shadow:
+    0 0 20px rgba(255, 255, 255, 0.08);
 }
+
+
+/* =========================================================
+   GRID
+   4 TARJETAS EN UNA SOLA FILA
+   ========================================================= */
 
 .systems__grid {
+  width: 100%;
+
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+
+  /* IMPORTANTE:
+     4 columnas = 4 tarjetas en una fila */
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
   gap: 18px;
+
+  align-items: stretch;
 }
 
-@media (max-width: 800px) {
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .systems {
+    width: min(900px, calc(100% - 40px));
+  }
+
   .systems__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
   }
 }
 
-@media (max-width: 480px) {
+
+/* =========================================================
+   CELULAR
+   ========================================================= */
+
+@media (max-width: 600px) {
+
   .systems {
     width: calc(100% - 32px);
+    padding: 40px 0 60px;
+  }
+
+  .systems__heading {
+    margin-bottom: 28px;
+  }
+
+  .systems__heading h2 {
+    font-size: 1.8rem;
   }
 
   .systems__grid {
     grid-template-columns: 1fr;
+    gap: 18px;
   }
 }

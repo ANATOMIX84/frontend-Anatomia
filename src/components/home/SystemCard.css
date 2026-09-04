@@ -1,38 +1,269 @@
+/* =========================================
+   TARJETA DEL SISTEMA
+   ========================================= */
+
 .system-card {
-  min-height: 205px;
-  padding: 26px 18px;
+  width: 100%;
+  height: 300px;
+  min-height: 300px;
+
+  padding: 14px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background-color: #ffffff;
-  border: 1px solid #dbe1eb;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(31, 42, 68, 0.06);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  background:
+    linear-gradient(
+      145deg,
+      #111a35 0%,
+      #080d20 55%,
+      #060a18 100%
+    );
+
+  border: 1px solid rgba(82, 72, 160, 0.55);
+  border-radius: 12px;
+
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.45),
+    inset 0 0 25px rgba(70, 40, 150, 0.05);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+
+  position: relative;
 }
+
+
+/* =========================================
+   HOVER
+   ========================================= */
 
 .system-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 22px rgba(31, 42, 68, 0.12);
+
+  border-color: #7147ff;
+
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.55),
+    0 0 18px rgba(112, 60, 255, 0.25);
 }
 
-.system-card__icon {
-  display: block;
+
+/* =========================================
+   CONTENEDOR DE IMAGEN
+   ========================================= */
+
+.system-card__image-container {
+  width: 100%;
+  height: 165px;
+  min-height: 165px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   margin-bottom: 14px;
-  font-size: 3.4rem;
-  line-height: 1;
+
+  overflow: hidden;
+
+  border-radius: 9px;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #211344 0%,
+      #100c29 45%,
+      #070b18 100%
+    );
+
+  border: 1px solid rgba(72, 91, 160, 0.45);
+
+  position: relative;
+
+  flex-shrink: 0;
 }
+
+
+/* =========================================
+   BRILLO DE FONDO DE LA IMAGEN
+   ========================================= */
+
+.system-card__image-container::before {
+  content: "";
+
+  position: absolute;
+
+  width: 100px;
+  height: 100px;
+
+  border-radius: 50%;
+
+  background: rgba(117, 45, 255, 0.12);
+
+  filter: blur(30px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   IMAGEN
+   ========================================= */
+
+.system-card__image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: contain;
+  object-position: center;
+
+  padding: 8px;
+
+  position: relative;
+  z-index: 1;
+
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+
+/* =========================================
+   TODAS LAS IMÁGENES
+   ========================================= */
+
+.system-card__image[src*="oseo"],
+.system-card__image[src*="muscular"],
+.system-card__image[src*="nervioso"],
+.system-card__image[src*="circulatorio"] {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+
+  padding: 8px;
+}
+
+
+/* =========================================
+   HOVER DE IMAGEN
+   ========================================= */
+
+.system-card:hover .system-card__image {
+  transform: scale(1.05);
+
+  filter:
+    drop-shadow(0 0 8px rgba(120, 65, 255, 0.35));
+}
+
+
+/* =========================================
+   TÍTULO
+   ========================================= */
 
 .system-card__title {
-  margin: 0 0 8px;
-  color: #26334a;
+  margin: 2px 0 6px;
+
+  color: #ffffff;
+
   font-size: 1rem;
+  font-weight: 700;
+
+  line-height: 1.3;
+
+  position: relative;
+  z-index: 2;
 }
+
+
+/* =========================================
+   DESCRIPCIÓN
+   ========================================= */
 
 .system-card__description {
   margin: 0;
-  color: #667085;
-  font-size: 0.88rem;
-  line-height: 1.45;
+
+  color: #aeb8cc;
+
+  font-size: 0.84rem;
+
+  line-height: 1.4;
+
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =========================================
+   BRILLO DEL BORDE
+   ========================================= */
+
+.system-card::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: 12px;
+
+  pointer-events: none;
+
+  box-shadow:
+    inset 0 0 25px rgba(90, 45, 200, 0.05);
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 1000px) {
+
+  .system-card {
+    height: 285px;
+    min-height: 285px;
+  }
+
+  .system-card__image-container {
+    height: 150px;
+    min-height: 150px;
+  }
+}
+
+
+/* =========================================
+   CELULAR
+   ========================================= */
+
+@media (max-width: 600px) {
+
+  .system-card {
+    height: 270px;
+    min-height: 270px;
+
+    padding: 12px;
+  }
+
+  .system-card__image-container {
+    height: 145px;
+    min-height: 145px;
+  }
+
+  .system-card__title {
+    font-size: 0.95rem;
+  }
+
+  .system-card__description {
+    font-size: 0.8rem;
+  }
 }

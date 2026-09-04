@@ -24,7 +24,7 @@ const trivias = [
   },
   {
     id: "circulatorio",
-    icono: "🫀",
+    icono: "❤️",
     titulo: "Sistema Circulatorio",
     descripcion: "Corazón, sangre y circulación.",
   },
