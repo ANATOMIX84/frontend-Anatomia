@@ -1,32 +1,41 @@
 import { useCallback, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { QuestionCard } from "../components/game/QuestionCard";
 import { QuizHeader } from "../components/game/QuizHeader";
 import { Footer } from "../components/home/Footer";
 import { Navbar } from "../components/home/Navbar";
-import { questions } from "../data/questions";
+import { questionsPorSistema } from "../data/questions";
 import "./TriviaPage.css";
 
 function TriviaPage() {
   const navigate = useNavigate();
+  const { tema } = useParams();
+
+  const preguntas = questionsPorSistema[tema || ""];
 
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(10);
 
-  const currentQuestion = questions[questionIndex];
+  // Si el sistema no existe, volver al selector de juego
+  if (!preguntas) {
+    navigate("/juego");
+    return null;
+  }
+
+  const currentQuestion = preguntas[questionIndex];
 
   const nextQuestion = useCallback(
     (answer: number | null) => {
       const isCorrect = answer === currentQuestion.correctOption;
       const nextScore = isCorrect ? score + 1 : score;
 
-      if (questionIndex === questions.length - 1) {
+      if (questionIndex === preguntas.length - 1) {
         navigate("/resultado", {
           state: {
             score: nextScore,
-            total: questions.length,
+            total: preguntas.length,
           },
         });
         return;
@@ -37,7 +46,13 @@ function TriviaPage() {
       setSelectedOption(null);
       setTimeLeft(10);
     },
-    [currentQuestion.correctOption, navigate, questionIndex, score]
+    [
+      currentQuestion.correctOption,
+      navigate,
+      questionIndex,
+      score,
+      preguntas.length,
+    ]
   );
 
   useEffect(() => {
@@ -62,7 +77,7 @@ function TriviaPage() {
         <section className="game-page__panel">
           <QuizHeader
             currentQuestion={questionIndex + 1}
-            totalQuestions={questions.length}
+            totalQuestions={preguntas.length}
             timeLeft={timeLeft}
           />
 

@@ -1,6 +1,9 @@
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+
 import { Footer } from "../components/home/Footer";
 import { Navbar } from "../components/home/Navbar";
+
 import "./GamePage.css";
 
 const trivias = [
@@ -32,6 +35,21 @@ const trivias = [
 
 function GamePage() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    const sistema = searchParams.get("sistema");
+
+    if (sistema) {
+      const triviaExiste = trivias.some(
+        (trivia) => trivia.id === sistema
+      );
+
+      if (triviaExiste) {
+        navigate(`/trivia/${sistema}`);
+      }
+    }
+  }, [searchParams, navigate]);
 
   return (
     <>
@@ -39,7 +57,9 @@ function GamePage() {
 
       <main className="game-selection">
         <section className="game-selection__content">
-          <p className="game-selection__eyebrow">TRIVIAS DE ANATOMÍA</p>
+          <p className="game-selection__eyebrow">
+            TRIVIAS DE ANATOMÍA
+          </p>
 
           <h1>Elige un tema para comenzar</h1>
 
@@ -55,14 +75,20 @@ function GamePage() {
                 className="trivia-topic"
                 onClick={() => navigate(`/trivia/${trivia.id}`)}
               >
-                <span className="trivia-topic__icon" aria-hidden="true">
+                <span
+                  className="trivia-topic__icon"
+                  aria-hidden="true"
+                >
                   {trivia.icono}
                 </span>
 
                 <h2>{trivia.titulo}</h2>
+
                 <p>{trivia.descripcion}</p>
 
-                <span className="trivia-topic__start">Comenzar →</span>
+                <span className="trivia-topic__start">
+                  Comenzar →
+                </span>
               </button>
             ))}
           </div>

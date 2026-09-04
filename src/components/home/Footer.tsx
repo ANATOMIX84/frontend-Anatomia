@@ -15,11 +15,11 @@ export function Footer() {
 
           <div className="footer__links-grid">
             <NavLink to="/home">Inicio</NavLink>
-            <NavLink to="/estadisticas">Estadísticas</NavLink>
+            
             <NavLink to="/juego">Juego</NavLink>
             <NavLink to="/modelo-3d">Modelo 3D</NavLink>
-            <NavLink to="/competencia">Competencia</NavLink>
-            <NavLink to="/creditos">Créditos</NavLink>
+            
+            
           </div>
         </section>
 
